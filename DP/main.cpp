@@ -51,25 +51,26 @@
     }
     }
     }
-    i=m-1;j=n-1;
+    i=m-1;j=n-1;int k=0;
     while(i>=0 && j>=0)
     {
     switch(ar[i][j])
     {
     case 0 :
     str.append(x,i,1);
-    i--;j--;cout<<"s1/s2"<<endl;break;
+    i--;j--;++k;cout<<"s1/s2"<<endl;break;
     case 1 :
     j--;cout<<"s1"<<endl;break;
     case 2 :
     i--;cout<<"s2"<<endl;break;
     }
     }
-    cout<<str;
+    for(i=k;i>=0;i--)
+    cout<<str[i];
     }
     int main ()
     {
-    string x="acbea",y="adca",str;
+    string x="abcdaf",y="acbcf",str;
     lcs(x,y,x.size(),y.size());
     cout<<endl;
     return 0;
