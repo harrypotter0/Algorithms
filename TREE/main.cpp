@@ -1,68 +1,24 @@
-#include<bits/stdc++.h>
-using namespace std;
-
-struct Tnode{
-int data;
-struct Tnode * left;
-struct Tnode * right;
-};
-
-struct Tnode* newnode(int da)
+#include<conio.h>
+#include<stdio.h>
+void main()
 {
-struct Tnode*newnode=(struct Tnode*)malloc(sizeof(struct Tnode));
-newnode->data=da;
-newnode->left=NULL;
-newnode->right=NULL;
-return newnode;
+int i,n,j,a[1000][2],b[1000];
+scanf("%d",&n);
+for(i=0;i<n;i++)
+{
+for(j=0;j<2;j++)
+scanf("%d",&a[i][j]);
 }
-
-struct Tnode * bst(int arr[],int a ,int b)
+for(i=0;i<n;i++)
 {
-if(a>b)return NULL;
-int mid = (a+b)/2;
-struct Tnode* root = newnode(arr[mid]);
-root->left=bst(arr,a,mid-1);
-root->right=bst(arr,mid+1,b);
-return root;
+if((a[i][0]%2==0&&a[i][1]%2==0&&a[i][1]==a[i][0]+2)||(a[i][0]%2==1&&a[i][1]%2==1&&a[i][1]==a[i][0]+2)||(a[i][0]%2==1&&a[i][1]==a[i][0]+1)||(a[i][0]%2==0&&a[i][1]==a[i][0]-1))
+b[i]=1;
+else
+b[i]=0;
 }
-
-
-void preorder(struct Tnode* node)
-{
-if(node==NULL)
-return ;
-cout<<node->data;
-preorder(node->left);
-preorder(node->right);
-}
-
-void postorder(struct Tnode* node)
-{
-if(node==NULL)
-return ;
-postorder(node->left);
-postorder(node->right);
-cout<<node->data;
-}
-
-void inorder(struct Tnode* node)
-{
-if(node==NULL)
-return ;
-inorder(node->left);
-cout<<node->data;
-inorder(node->right);
-}
-int main ()
-{
-int arr[]={1,2,3,4,5,6,7};
-struct Tnode* node = bst(arr,0,6);
-cout<<endl<<"PREORDER"<<endl;
-preorder(node);
-cout<<endl<<"POSTORDER"<<endl;
-postorder(node);
-cout<<endl<<"INORDER"<<endl;
-inorder(node);
-
-return 0;
+for(i=0;i<n;i++)
+if(b[i]==1)
+printf("YES\n");
+else
+printf("NO\n");
 }
