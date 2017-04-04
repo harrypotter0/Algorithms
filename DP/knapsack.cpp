@@ -101,7 +101,7 @@ ll palin(ll x)
   }
 ////////////////////////////////////////////////////////////////////////////
 /*for(i=0;i<n;i++)
-v.pb(i+1);
+v.pb(i+1);f trgf  bvb gbnnnnnn             m,\ n b  cbbbbb  hgbn jyu  gbvv m,;hhjyyuu
 for(i=0;i<k;i++)
 {
 cin>>a;
@@ -129,8 +129,7 @@ bool f(char ch1,char ch2){
 int main(){
     //ios :: sync_with_stdio(0); cin.tie(0);
     //cout << (fixed) << setprecision(10);
-ll t=0,mini=1e9,maxi=-1e9,sum=0,i,n,a[210210],b[201210],j,w;
-ll c[201210]={0},d[201210]={0};
+ll t=0,mini=1e9,maxi=-1e9,sum=0,i,n,a[5]={100,20,60,40},b[5]={3,2,4,1},j,w;
 //ld sum1=0,sum2=0;
 //st s;
 //map<int, int> mp;
@@ -139,29 +138,31 @@ ll c[201210]={0},d[201210]={0};
 //vi v;
 //memset(dp , -1 , sizeof(dp));
 //sort(s.begin(),s.end(),f);
-cin>>n;cin>>w;
+//cin>>n;cin>>w;
+n=4;w=5;
 ll v[n+1][w+1];
-for(i=0;i<n;i++)cin>>a[i];
-for(i=0;i<n;i++)cin>>b[i];
-
-for(i=0;i<n;i++)
-for(j=0;j<n;j++)
-if(i==0 || j==0)v[i][j]=0;
-
-for(i=1;i<=n;i++)
-for(j=1;j<=w;j++){
-if(b[i-1]<=w)
+//for(i=0;i<n;i++)cin>>a[i];
+//for(i=0;i<n;i++)cin>>b[i];
+for(i=0;i<=n;i++)
+for(j=0;j<=w;j++){
+if(i==0 || j==0)
+v[i][j]=0;
+else if(b[i-1]<=j)
 v[i][j]=max(v[i-1][j],a[i-1]+v[i-1][j-b[i-1]]);
 else
 v[i][j]=v[i-1][j];
 }
-j=w;i=n;
+for(i=0;i<=n;i++)
+{for(j=0;j<=w;j++)
+{cout<<v[i][j]<<" ";}
+cout<<endl;}
+/*
 while(j>=0)
 {
 if(v[i][j]!=v[i-1][j])
-{cout<<v[i][j]<<" "<<i<<endl;j=j-b[i];i--;}
+{cout<<v[i][j]<<" "<<a[i]<<endl;j=j-b[i];i--;}
 else i--;
-}
+}*/
 //cout<<v[i][w]<<" "<<i<<endl;w=w-a[i];
 return 0;
 }
